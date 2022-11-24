@@ -1,0 +1,75 @@
+openapi: 3.0.2
+info:
+  title: pilet-API
+  version: 1.0.0
+  description: '### This is a Swagger UI for our Pilet API'
+paths:
+  /pilet:
+    description: ''
+    get:
+      tags:
+        - pilet
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                list of pilet:
+                  value:
+                    - Dora pilet
+                    - Miyagi pilet
+      summary: Get a list of all pilet
+      description: Returns a list of all pilet in API
+  '/pilet/{id}':
+    get:
+      tags:
+        - details
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Full details of...:
+                  value: |-
+                    
+                    {"id":1,"name":"Miyagi pilet",price...
+      operationId: id
+      summary: Get full details of a pilet
+      description: Returns full details of a given id pilet
+components:
+  schemas:
+    error:
+      title: Root Type for error
+      description: ''
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Error message.
+    new-pilet:
+      description: ''
+      required:
+        - price
+        - Data
+        - name
+      type: object
+      properties:
+        price:
+          format: float
+          description: ''
+          type: number
+        Data:
+          description: ''
+          type: string
+        name:
+          description: ''
+          type: string
